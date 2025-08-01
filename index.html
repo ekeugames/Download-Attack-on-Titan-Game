@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download Attack on Titan Wings of Freedom | EKEU GAMES</title>
+  <title>Attack on Titan Wings of Freedom | EKEU GAMES</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -230,30 +230,50 @@
       margin-top: 30px;
     }
     
-    .hero-stats {
+    /* التعديلات الجذرية على الإحصائيات */
+    .stats-container {
       display: flex;
       justify-content: center;
-      gap: 40px;
-      margin-top: 60px;
       flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 50px;
+      padding: 0 10px;
     }
     
-    .stat-item {
+    .stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 20px 30px;
       text-align: center;
+      min-width: 200px;
+      flex: 1;
+      max-width: 250px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
     
-    .stat-item h3 {
+    .stat-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    
+    .stat-value {
       font-size: 2.5rem;
+      font-weight: 800;
       color: var(--primary);
-      margin-bottom: 5px;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
+      line-height: 1;
+      transition: all 0.3s;
     }
     
-    .stat-item p {
+    .stat-label {
       font-size: 1rem;
       color: var(--text-secondary);
       text-transform: uppercase;
       letter-spacing: 1.5px;
+      font-weight: 600;
     }
     
     /* Game Details Section */
@@ -351,7 +371,7 @@
       margin-bottom: 25px;
     }
     
-    /* Platform Selector */
+    /* Platform Selector - التعديلات المطلوبة */
     .platform-selector {
       margin-bottom: 25px;
       padding: 15px;
@@ -363,12 +383,14 @@
       margin-bottom: 15px;
       color: var(--text);
       font-size: 1.2rem;
+      text-align: center;
     }
     
     .platform-options {
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
+      justify-content: center;
     }
     
     .platform-option {
@@ -380,16 +402,21 @@
       background: rgba(255, 255, 255, 0.05);
       cursor: pointer;
       transition: all 0.3s;
+      position: relative;
     }
     
     .platform-option:hover {
       background: rgba(255, 255, 255, 0.1);
     }
     
-    .platform-option input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
+    .platform-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
       cursor: pointer;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
     }
     
     .platform-option label {
@@ -400,7 +427,30 @@
     }
     
     .platform-option i {
+      color: var(--text-secondary);
+    }
+    
+    .platform-option.selected {
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid var(--primary);
+    }
+    
+    .platform-option.selected i {
       color: var(--primary);
+    }
+    
+    /* التعديلات الجديدة للشاشات الصغيرة */
+    @media (max-width: 768px) {
+      .platform-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      
+      .platform-option {
+        width: 100%;
+        justify-content: center;
+      }
     }
     
     .features-list {
@@ -823,16 +873,46 @@
         font-size: 2rem;
       }
       
-      .hero-stats {
-        gap: 25px;
-      }
-      
-      .stat-item h3 {
-        font-size: 2rem;
-      }
-      
       .game-image-container {
         height: 250px;
+      }
+    }
+    
+    /* التعديلات الجوهرية للإحصائيات على الهواتف */
+    @media (max-width: 768px) {
+      .stats-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .stat-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: unset;
+        padding: 25px;
+        margin-bottom: 15px;
+      }
+      
+      .stat-value {
+        font-size: 2.2rem;
+      }
+      
+      .stat-label {
+        font-size: 0.95rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .stat-card {
+        padding: 20px 15px;
+      }
+      
+      .stat-value {
+        font-size: 1.8rem;
+      }
+      
+      .stat-label {
+        font-size: 0.85rem;
       }
     }
     
@@ -903,33 +983,36 @@
       text-align: center;
     }
     
-    .stats-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
-    }
-    
-    .stat-card {
-      background: rgba(255,255,255,0.05);
+    /* Download Success Message */
+    .download-success {
+      background: rgba(34, 197, 94, 0.15);
+      border: 2px solid var(--primary);
       border-radius: 12px;
       padding: 15px;
-      min-width: 180px;
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.1);
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      animation: fadeIn 0.5s ease-out;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
-    .stat-value {
-      font-size: 2.2rem;
-      font-weight: 700;
+    .download-success i {
+      font-size: 2rem;
       color: var(--primary);
-      margin-bottom: 5px;
     }
     
-    .stat-label {
-      font-size: 0.9rem;
+    .download-success-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+      color: var(--primary);
+    }
+    
+    .download-success-content p {
       color: var(--text-secondary);
-      text-transform: uppercase;
+      font-size: 0.95rem;
     }
   </style>
 </head>
@@ -942,6 +1025,7 @@
   <header>
     <div class="container">
       <div class="header-content">
+        <!-- الشعار في مكانه الأصلي على اليسار -->
         <div class="logo-container">
           <img src="https://i.postimg.cc/sxPfmzXr/Picsart-07-01-21-17-48-570.png-25" alt="EKEU GAMES Logo">
           <div class="logo-text">
@@ -977,18 +1061,28 @@
           <a href="#details" class="btn btn-outline"><i class="fas fa-info-circle"></i> Game Details</a>
         </div>
         
+        <!-- رسالة نجاح التحميل -->
+        <div class="download-success" id="download-success" style="display: none;">
+          <i class="fas fa-check-circle"></i>
+          <div class="download-success-content">
+            <h3>Download Started!</h3>
+            <p>Your download has started successfully. The game will be ready to play shortly.</p>
+          </div>
+        </div>
+        
+        <!-- الإحصائيات المعدلة بشكل جذري -->
         <div class="stats-container fade-in delay-3">
           <div class="stat-card">
             <div class="stat-value">4.9/5</div>
-            <div class="stat-label">User Rating</div>
+            <div class="stat-label">USER RATING</div>
           </div>
           <div class="stat-card">
             <div class="stat-value">27M</div>
-            <div class="stat-label">Downloads</div>
+            <div class="stat-label">DOWNLOADS</div>
           </div>
           <div class="stat-card">
             <div class="stat-value">100%</div>
-            <div class="stat-label">Virus Free</div>
+            <div class="stat-label">VIRUS FREE</div>
           </div>
         </div>
       </div>
@@ -1033,28 +1127,28 @@
         Step into the world of Attack on Titan and join the Survey Corps in their battle for humanity's survival. Experience the thrill of high-speed omni-directional mobility gear as you soar through the skies and take down towering Titans. This ultimate edition includes all story arcs, character episodes, and DLC content. Relive iconic moments from the anime as Eren, Mikasa, Levi and other fan-favorite characters. With enhanced combat mechanics and stunning visuals, this is the definitive Attack on Titan experience!
       </p>
       
-    <!-- Platform Selector -->
-      <div class="platform-selector">
-        <div class="platform-title">Select Platform:</div>
-        <div class="platform-options">
-          <div class="platform-option">
-            <input type="checkbox" id="platform-pc" checked>
-            <label for="platform-pc"><i class="fas fa-desktop"></i> PC</label>
-          </div>
-          <div class="platform-option">
-            <input type="checkbox" id="platform-ps">
-            <label for="platform-ps"><i class="fab fa-playstation"></i> PlayStation</label>
-          </div>
-          <div class="platform-option">
-            <input type="checkbox" id="platform-xbox">
-            <label for="platform-xbox"><i class="fab fa-xbox"></i> Xbox</label>
-          </div>
-          <div class="platform-option">
-            <input type="checkbox" id="platform-mobile">
-            <label for="platform-mobile"><i class="fas fa-mobile-alt"></i> Mobile</label>
-          </div>
+    <!-- Platform Selector - التعديلات المطلوبة -->
+    <div class="platform-selector">
+      <div class="platform-title">Select Platform:</div>
+      <div class="platform-options">
+        <div class="platform-option" data-platform="pc">
+          <input type="radio" id="platform-pc" name="platform" checked>
+          <label for="platform-pc"><i class="fas fa-desktop"></i> PC</label>
+        </div>
+        <div class="platform-option" data-platform="ps">
+          <input type="radio" id="platform-ps" name="platform">
+          <label for="platform-ps"><i class="fab fa-playstation"></i> PlayStation</label>
+        </div>
+        <div class="platform-option" data-platform="xbox">
+          <input type="radio" id="platform-xbox" name="platform">
+          <label for="platform-xbox"><i class="fab fa-xbox"></i> Xbox</label>
+        </div>
+        <div class="platform-option" data-platform="mobile">
+          <input type="radio" id="platform-mobile" name="platform">
+          <label for="platform-mobile"><i class="fas fa-mobile-alt"></i> Mobile</label>
         </div>
       </div>
+    </div>
       
       <h3 class="premium-features-title"><i class="fas fa-crown"></i> Ultimate Edition Features</h3>
       <ul class="features-list">
@@ -1269,19 +1363,29 @@
         observer.observe(element);
       });
       
-      // Platform selection functionality
-      const platformOptions = document.querySelectorAll('.platform-option input');
+      // الكود الجديد لاختيار المنصة
+      const platformOptions = document.querySelectorAll('.platform-option');
+      
+      function selectPlatform(option) {
+        // إزالة الفئة "selected" من جميع الخيارات
+        platformOptions.forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        
+        // إضافة الفئة "selected" للخيار المحدد
+        option.classList.add('selected');
+      }
+      
+      // اختيار الخيار الأول افتراضياً
+      platformOptions[0].classList.add('selected');
+      
+      // إضافة مستمعي الأحداث
       platformOptions.forEach(option => {
-        option.addEventListener('change', function() {
-          if(this.id === 'platform-pc') {
-            // Only allow one selection for PC
-            platformOptions.forEach(opt => {
-              if(opt !== this) opt.checked = false;
-            });
-          } else {
-            // Uncheck PC if another platform is selected
-            document.getElementById('platform-pc').checked = false;
-          }
+        option.addEventListener('click', function() {
+          selectPlatform(this);
+          // تحديث الـ radio button
+          const radio = this.querySelector('input[type="radio"]');
+          radio.checked = true;
         });
       });
       
@@ -1294,7 +1398,7 @@
           this.classList.remove('pulse');
         }, 1500);
       });
-    });
+    });  
   </script>
 </body>
 </html>
